@@ -21,7 +21,7 @@ resource "aws_iam_role" "github_oidc" {
         }
         Condition = {
           StringEquals = { "token.actions.githubusercontent.com:aud" = "sts.amazonaws.com",
-          "token.actions.githubusercontent.com:sub" = "repo:octo-org/octo-repo:ref:refs/heads/octo-branch" }
+          "token.actions.githubusercontent.com:sub" = "repo:seanmcguigan/github-oidc-role-chaining:ref:refs/heads/main" }
         }
       },
     ]
