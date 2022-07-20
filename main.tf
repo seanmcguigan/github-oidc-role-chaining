@@ -41,6 +41,7 @@ resource "aws_iam_policy" "github_oidc" {
       {
         Action = [
           "sts:AssumeRole",
+          "sts:TagSession"
         ]
         Effect   = "Allow"
         Resource = aws_iam_role.external_account.arn
