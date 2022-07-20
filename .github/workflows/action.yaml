@@ -1,5 +1,6 @@
 name: 'AWS OIDC Credentials via Role Assume Chaining'
 description: 'Retrieve AWS credentials by chaining role assumes'
+
 inputs:
   role-for-oidc:
     description: The role that should be used for GitHub OIDC authentication
