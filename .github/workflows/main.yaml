@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     name: role switcher
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
       - uses: ./.github/workflows/action.yaml
         with:
           role-for-oidc: 'arn:aws:iam::360884427279:role/github_oidc'
