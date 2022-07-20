@@ -2,14 +2,17 @@ on: push
 
 permissions:
   id-token: write
-  contents: read    # This is required for actions/checkout
+  contents: read # This is required for actions/checkout
 
 jobs:
   role_switcher:
     runs-on: ubuntu-latest
     name: role switcher
     steps:
-      - uses: actions/checkout@v3 
+      - uses: actions/checkout@v3
+      - name: Install AWS cli
+        id: install-aws-cli
+        uses: unfor19/install-aws-cli-action@master
       - name: assume oidc role
         uses: meisterplan/configure-aws-credentials@v1.6.0-custom
         with:
@@ -17,6 +20,8 @@ jobs:
           role-to-assume: 'arn:aws:iam::360884427279:role/github_oidc'
           role-session-name: 'oidc-role'
           role-duration-seconds: 900
+      - run: aws sts get-caller-identity
+        name: oidc role
       - name: assume target role
         uses: meisterplan/configure-aws-credentials@v1.6.0-custom
         with:
@@ -27,4 +32,5 @@ jobs:
           role-to-assume: 'arn:aws:iam::360884427279:role/external_account'
           role-session-name: 'external-account-role'
           role-duration-seconds: 900
-      - run: echo "foobar" && env
+      - run: aws sts get-caller-identity
+        name: external account role
