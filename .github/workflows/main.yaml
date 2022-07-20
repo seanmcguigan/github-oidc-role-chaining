@@ -1,11 +1,8 @@
-on:
-  push:
-    paths-ignore:
-      - '**/README.md'
+on: push
 
 permissions:
-      id-token: write
-      contents: read    # This is required for actions/checkout
+  id-token: write
+  contents: read    # This is required for actions/checkout
 
 jobs:
   role_switcher:
@@ -19,7 +16,7 @@ jobs:
           aws-region: 'us-east-1'
           role-to-assume: 'arn:aws:iam::360884427279:role/github_oidc'
           role-session-name: 'oidc-role'
-          role-duration-seconds: 120
+          role-duration-seconds: 900
       - name: assume target role
         uses: meisterplan/configure-aws-credentials@v1.6.0-custom
         with:
@@ -29,5 +26,5 @@ jobs:
           aws-region: 'us-east-1'
           role-to-assume: 'arn:aws:iam::360884427279:role/external_account'
           role-session-name: 'external-account-role'
-          role-duration-seconds: 120
+          role-duration-seconds: 900
       - run: echo "foobar" && env
