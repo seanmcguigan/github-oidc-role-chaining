@@ -1,0 +1,12 @@
+on: [push]
+
+jobs:
+  role_switcher:
+    runs-on: ubuntu-latest
+    name: role switcher
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/hello-world-composite-action@v1
+        with:
+          who-to-greet: 'Mona the Octocat'
+      - run: echo random
