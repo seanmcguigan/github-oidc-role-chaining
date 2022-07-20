@@ -10,7 +10,7 @@ jobs:
     name: role switcher
     steps:
       - uses: actions/checkout@v3
-      - uses: .github/workflows/action.yaml
+      - uses: ./.github/workflows/action.yaml
         with:
           role-for-oidc: 'arn:aws:iam::360884427279:role/github_oidc'
           role-to-assume: 'arn:aws:iam::360884427279:role/external_account'
