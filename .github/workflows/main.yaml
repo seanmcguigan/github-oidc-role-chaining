@@ -13,6 +13,6 @@ jobs:
           aws-region: 'us-east-1'
           role-session-name: 'foobar'
           role-duration-seconds: '120'
-        run: echo "foo"
+      - run: echo "foo"
         shell: bash
           
