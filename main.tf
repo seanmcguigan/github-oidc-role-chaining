@@ -13,11 +13,11 @@ resource "aws_iam_role" "github_oidc" {
     Version = "2012-10-17"
     Statement = [
       {
-        Action    = "sts:AssumeRoleWithWebIdentity"
-        Effect    = "Allow"
-        Sid       = "1"
+        Action = "sts:AssumeRoleWithWebIdentity"
+        Effect = "Allow"
+        Sid    = "1"
         Principal = {
-            Federated = aws_iam_openid_connect_provider.github.arn
+          Federated = aws_iam_openid_connect_provider.github.arn
         }
         Condition = {
           StringEquals = { "token.actions.githubusercontent.com:aud" = "sts.amazonaws.com",

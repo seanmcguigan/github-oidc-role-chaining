@@ -4,11 +4,14 @@ resource "aws_iam_role" "external_account" {
     Version = "2012-10-17"
     Statement = [
       {
-        Action    = "sts:AssumeRole"
-        Effect    = "Allow"
-        Sid       = "1"
+        Action = [
+          "sts:AssumeRole",
+          "sts:TagSession"
+        ]
+        Effect = "Allow"
+        Sid    = "1"
         Principal = {
-            AWS = aws_iam_role.github_oidc.arn
+          AWS = aws_iam_role.github_oidc.arn
         }
       },
     ]
